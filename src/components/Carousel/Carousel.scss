@@ -25,6 +25,18 @@
     }
   }
 }
+.nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  padding: 0.5rem;
+  &__dot {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+  }
+}
 
 .slide {
   position: absolute;

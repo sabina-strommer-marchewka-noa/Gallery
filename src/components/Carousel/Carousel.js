@@ -3,6 +3,7 @@ import "./Carousel.scss";
 import ArrowLeft from "./ArrowLeft";
 import ArrowRight from "./ArrowRight";
 import Slide from "./Slide";
+import Dot from "./Dot";
 
 const Carousel = ({ data }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -23,6 +24,10 @@ const Carousel = ({ data }) => {
     }
   };
 
+  const handlePick = (currentIndex) => {
+    setCurrentSlide(currentIndex);
+  };
+
   return (
     <div className="carousel">
       <ArrowLeft onLeft={handleLeft} />
@@ -33,9 +38,13 @@ const Carousel = ({ data }) => {
       ))}
 
       <ArrowRight onRight={handleRight} />
+      <div className="nav">
+        {data.map((item, i) => (
+          <Dot onPick={handlePick} key={item.id} index={i} />
+        ))}
+      </div>
     </div>
   );
 };
 
 export default Carousel;
-
