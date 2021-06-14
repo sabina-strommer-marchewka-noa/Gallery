@@ -1,6 +1,6 @@
-const Slide = ({ children, index }) => {
+const Slide = ({ children, index, currentSlide }) => {
   return (
-    <div className={`slide ${index === 0 ? "slide--active" : ""}`}>
+    <div className={`slide ${index === currentSlide ? "slide--active" : ""}`}>
       {children}
     </div>
   );
