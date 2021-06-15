@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Carousel.scss";
 import ArrowLeft from "./ArrowLeft";
 import ArrowRight from "./ArrowRight";
 import Slide from "./Slide";
 import Dot from "./Dot";
+import Autoslide from "./Autoslide";
 
 const Carousel = ({ data }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [slideInterval, setSlideInterval] = useState(null);
 
   const handleLeft = () => {
     if (currentSlide === 0) {
@@ -17,16 +19,33 @@ const Carousel = ({ data }) => {
   };
 
   const handleRight = () => {
-    if (currentSlide === data.length - 1) {
-      setCurrentSlide(0);
-    } else {
-      setCurrentSlide(currentSlide + 1);
-    }
+    setCurrentSlide((value) => {
+      if (value === data.length - 1) {
+        return 0;
+      } else {
+        return value + 1;
+      }
+    });
   };
 
   const handlePick = (currentIndex) => {
     setCurrentSlide(currentIndex);
   };
+
+  const handleAutoslide = () => {
+    if (slideInterval === null) {
+      setSlideInterval(setInterval(() => handleRight(), 2800));
+    } else {
+      clearInterval(slideInterval);
+      setSlideInterval(null);
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      clearInterval(slideInterval);
+    };
+  }, []);
 
   return (
     <div className="carousel">
@@ -42,6 +61,7 @@ const Carousel = ({ data }) => {
         {data.map((item, i) => (
           <Dot onPick={handlePick} key={item.id} index={i} />
         ))}
+        <Autoslide onAutoslide={handleAutoslide} />
       </div>
     </div>
   );
