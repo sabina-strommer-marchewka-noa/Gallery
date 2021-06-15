@@ -59,9 +59,17 @@ const Carousel = ({ data }) => {
       <ArrowRight onRight={handleRight} />
       <div className="nav">
         {data.map((item, i) => (
-          <Dot onPick={handlePick} key={item.id} index={i} />
+          <Dot
+            onPick={handlePick}
+            key={item.id}
+            index={i}
+            currentSlide={currentSlide}
+          />
         ))}
-        <Autoslide onAutoslide={handleAutoslide} />
+        <Autoslide
+          onAutoslide={handleAutoslide}
+          isAutoslideActive={slideInterval === null}
+        />
       </div>
     </div>
   );

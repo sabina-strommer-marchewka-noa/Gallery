@@ -1,5 +1,6 @@
 .carousel {
   position: relative;
+  margin-top: 0.5rem;
   &__arrow {
     position: absolute;
     z-index: 2;
@@ -10,6 +11,11 @@
     opacity: 0.3;
     border: none;
     outline: none;
+    cursor: pointer;
+    transition: 0.3s opacity;
+    &:hover {
+      opacity: 0.7;
+    }
     &--left {
       border-bottom-right-radius: 3px;
       border-top-right-radius: 3px;
@@ -26,23 +32,43 @@
   }
 }
 .nav {
-  position: absolute;
-  bottom: 0;
+  position: relative;
   width: 100%;
   background-color: rgb(0, 0, 0);
   padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &__dot {
-    width: 0.8rem;
-    height: 0.8rem;
+    width: 0.6rem;
+    height: 0.6rem;
     border-radius: 50%;
+    border: none;
+    margin: 0 0.3rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.3s opacity;
+    &:hover {
+      opacity: 1;
+    }
+    &--active {
+      opacity: 1;
+    }
   }
   &__autoslide {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     background: none;
     border: none;
     outline: none;
+    padding: 0.2rem;
+    margin-right: 0.3rem;
+    cursor: pointer;
     &-icon {
       fill: rgb(255, 255, 255);
-      width: 1rem;
+      width: 0.8rem;
     }
   }
 }
@@ -50,8 +76,13 @@
   position: absolute;
   top: 0;
   opacity: 0;
+  pointer-events: none;
+  display: flex;
+  transition: 1s opacity;
+
   &--active {
     position: relative;
     opacity: 1;
+    pointer-events: visible;
   }
 }
