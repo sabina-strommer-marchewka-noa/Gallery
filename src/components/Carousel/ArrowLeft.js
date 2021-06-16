@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 const ArrowLeft = ({ onLeft }) => {
   return (
     <button onClick={onLeft} className="carousel__arrow carousel__arrow--left">
@@ -37,3 +38,7 @@ const ArrowLeft = ({ onLeft }) => {
 };
 
 export default ArrowLeft;
+
+ArrowLeft.propTypes = {
+  onLeft: PropTypes.func,
+};

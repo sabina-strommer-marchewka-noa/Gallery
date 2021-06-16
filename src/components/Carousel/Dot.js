@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 const Dot = ({ onPick, index, currentSlide }) => {
   return (
     <button
@@ -8,3 +9,9 @@ const Dot = ({ onPick, index, currentSlide }) => {
 };
 
 export default Dot;
+
+Dot.propTypes = {
+  onPick: PropTypes.func,
+  index: PropTypes.number,
+  currentSlide: PropTypes.number,
+};

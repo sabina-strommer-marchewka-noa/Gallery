@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import "./Carousel.scss";
 import ArrowLeft from "./ArrowLeft";
 import ArrowRight from "./ArrowRight";
@@ -76,3 +77,7 @@ const Carousel = ({ data }) => {
 };
 
 export default Carousel;
+
+Carousel.propTypes = {
+  data: PropTypes.array,
+};

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 const Autoslide = ({ onAutoslide, isAutoslideActive }) => {
   return (
     <button onClick={onAutoslide} className="nav__autoslide">
@@ -44,3 +45,8 @@ const Autoslide = ({ onAutoslide, isAutoslideActive }) => {
 };
 
 export default Autoslide;
+
+Autoslide.propTypes = {
+  onAutoslide: PropTypes.func,
+  isAutoslideActive: PropTypes.bool,
+};

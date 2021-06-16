@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 const ArrowRight = ({ onRight }) => {
   return (
     <button
@@ -39,3 +40,7 @@ const ArrowRight = ({ onRight }) => {
   );
 };
 export default ArrowRight;
+
+ArrowRight.propTypes = {
+  onRight: PropTypes.func,
+};
