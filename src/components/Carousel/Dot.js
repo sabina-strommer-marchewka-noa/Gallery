@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
-const Dot = ({ onPick, index, currentSlide }) => {
+import styles from "../../styles/Carousel.module.scss";
+const Dot = ({ onClick, index, currentSlide }) => {
   return (
     <button
-      onClick={() => onPick(index)}
-      className={`nav__dot ${index === currentSlide ? "nav__dot--active" : ""}`}
+      onClick={() => onClick(index)}
+      className={`${styles.nav__dot} ${
+        index === currentSlide ? styles["nav__dot--active"] : ""
+      }`}
     />
   );
 };
@@ -11,7 +14,7 @@ const Dot = ({ onPick, index, currentSlide }) => {
 export default Dot;
 
 Dot.propTypes = {
-  onPick: PropTypes.func,
+  onClick: PropTypes.func,
   index: PropTypes.number,
   currentSlide: PropTypes.number,
 };

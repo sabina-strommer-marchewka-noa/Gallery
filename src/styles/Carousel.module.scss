@@ -1,6 +1,9 @@
 .carousel {
   position: relative;
   margin-top: 0.5rem;
+  &__image {
+    max-width: 100%;
+  }
   &__arrow {
     position: absolute;
     z-index: 2;

@@ -1,7 +1,12 @@
 import PropTypes from "prop-types";
+import styles from "../../styles/Carousel.module.scss";
 const Slide = ({ children, index, currentSlide }) => {
   return (
-    <div className={`slide ${index === currentSlide ? "slide--active" : ""}`}>
+    <div
+      className={`${styles.slide} ${
+        index === currentSlide ? styles["slide--active"] : ""
+      }`}
+    >
       {children}
     </div>
   );

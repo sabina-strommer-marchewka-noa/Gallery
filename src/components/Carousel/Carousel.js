@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import "./Carousel.scss";
-import ArrowLeft from "./ArrowLeft";
-import ArrowRight from "./ArrowRight";
+import styles from "../../styles/Carousel.module.scss";
+import ArrowLeft from "./icons/ArrowLeft";
+import ArrowRight from "./icons/ArrowRight";
 import Slide from "./Slide";
 import Dot from "./Dot";
-import Autoslide from "./Autoslide";
+import Play from "./icons/Play";
+import Pause from "./icons/Pause";
 
 const Carousel = ({ data }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -49,28 +50,41 @@ const Carousel = ({ data }) => {
   }, []);
 
   return (
-    <div className="carousel">
-      <ArrowLeft onLeft={handleLeft} />
+    <div className={styles.carousel}>
+      <button
+        onClick={handleLeft}
+        className={`${styles.carousel__arrow} ${styles["carousel__arrow--left"]}`}
+      >
+        <ArrowLeft />
+      </button>
       {data.map((item, i) => (
         <Slide key={item.id} index={i} currentSlide={currentSlide}>
-          {item.content}
+          <img
+            src={item.src}
+            alt={item.alt}
+            className={styles.carousel__image}
+          />
         </Slide>
       ))}
+      <button
+        onClick={handleRight}
+        className={`${styles.carousel__arrow} ${styles["carousel__arrow--right"]}`}
+      >
+        <ArrowRight />
+      </button>
 
-      <ArrowRight onRight={handleRight} />
-      <div className="nav">
+      <div className={styles.nav}>
         {data.map((item, i) => (
           <Dot
-            onPick={handlePick}
+            onClick={handlePick}
             key={item.id}
             index={i}
             currentSlide={currentSlide}
           />
         ))}
-        <Autoslide
-          onAutoslide={handleAutoslide}
-          isAutoslideActive={slideInterval === null}
-        />
+        <button onClick={handleAutoslide} className={styles.nav__autoslide}>
+          {slideInterval === null ? <Play /> : <Pause />}
+        </button>
       </div>
     </div>
   );
